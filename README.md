@@ -30,7 +30,7 @@ Dans un autre terminal, lancez :
 npm run dev
 ```
 
-Pour voir la page d'accueil, ouvrez : [Accueil](http://127.0.0.1:8000)
+Pour voir la page d'accueil, ouvrez : [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## Mentions légales
 

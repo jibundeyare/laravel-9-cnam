@@ -61,13 +61,21 @@ class PlatSeeder extends Seeder
         ];
 
         foreach ($platDatas as $platData) {
+            // création d'un nouveau plat
             $plat = new Plat();
+            // affectation d'un nom
             $plat->nom = $platData['nom'];
+            // affectation d'une description
             $plat->description = $platData['description'];
+            // affectation d'un prix
             $plat->prix = $platData['prix'];
+            // sélection du statut epinglé / pas épinglé
             $plat->epingle = $platData['epingle'];
+            // affectation d'une photo
             $plat->photo_plat_id = $platData['photo_plat_id'];
+            // affectation d'une catégorie
             $plat->categorie_id = $platData['categorie_id'];
+            // sauvegarde dans la BDD
             $plat->save();
         }
     }

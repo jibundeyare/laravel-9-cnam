@@ -18,22 +18,57 @@ class PlatSeeder extends Seeder
     public function run()
     {
         // toutes les catégories
+        // Categorie::all() c'est l'équivalent du SQL 'SELECT * FROM Categorie'
         $categories = Categorie::all();
-        // la première catégorie
-        $categorie = $categories->first();
+        // la première catégorie (entrée)
+        $categorieEntree = $categories->first();
+        // la deuxième catégorie (id 2 plat)
+        // Categorie::find(2) c'est l'équivalent du SQL 'SELECT * FROM Categorie WHERE id = 2'
+        $categoriePlat = Categorie::find(2);
+        // la troisième catégorie (id 3 dessert)
+        $categorieDessert = Categorie::find(3);
 
         // toutes les photos
         $photos = PhotoPlat::all();
         // la première photo
         $photo = $photos->first();
 
-        $plat = new Plat();
-        $plat->nom = "Foo";
-        $plat->description = "Lorem ipsum dolor sit amet consectetur, adipisicing elit.";
-        $plat->prix = 23.14;
-        $plat->epingle = false;
-        $plat->photo_plat_id = $photo->id;
-        $plat->categorie_id = $categorie->id;
-        $plat->save();
+        $platDatas = [
+            [
+                'nom' => 'Foo',
+                'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
+                'prix' => 23.14,
+                'epingle' => false,
+                'photo_plat_id' => $photo->id,
+                'categorie_id' => $categorieEntree->id,
+            ],
+            [
+                'nom' => 'Bar',
+                'description' => 'Dolor sit amet consectetur, adipisicing elit lorem ipsum.',
+                'prix' => 42.31,
+                'epingle' => true,
+                'photo_plat_id' => $photo->id,
+                'categorie_id' => $categoriePlat->id,
+            ],
+            [
+                'nom' => 'Baz',
+                'description' => 'Amet consectetur, adipisicing elit lorem ipsum dolor sit.',
+                'prix' => 12.15,
+                'epingle' => true,
+                'photo_plat_id' => $photo->id,
+                'categorie_id' => $categorieDessert->id,
+            ],
+        ];
+
+        foreach ($platDatas as $platData) {
+            $plat = new Plat();
+            $plat->nom = $platData['nom'];
+            $plat->description = $platData['description'];
+            $plat->prix = $platData['prix'];
+            $plat->epingle = $platData['epingle'];
+            $plat->photo_plat_id = $platData['photo_plat_id'];
+            $plat->categorie_id = $platData['categorie_id'];
+            $plat->save();
+        }
     }
 }

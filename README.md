@@ -37,3 +37,7 @@ Pour voir la page d'accueil, ouvrez : [http://127.0.0.1:8000](http://127.0.0.1:8
 Les images suivantes ont été utilisées :
 
 [dish on white ceramic plate photo – Free Food Image on Unsplash](https://unsplash.com/photos/N_Y88TWmGwA)
+
+[vegetable and meat on bowl photo – Free Food Image on Unsplash](https://unsplash.com/photos/kcA-c3f_3FE)
+
+[flat-lay photography of cooked meat and sauce platter photo – Free Food Image on Unsplash](https://unsplash.com/photos/tkfRSPt-jdk)

@@ -15,11 +15,18 @@ class PhotoPlatSeeder extends Seeder
      */
     public function run()
     {
-        // création d'une nouvelle photo
-        $photo = new PhotoPlat();
-        // sélection d'un fichier jpg
-        $photo->chemin = "img/plats/image-generique.jpg";
-        // sauvegarde dans la BDD
-        $photo->save();
+        $photoDatas = [
+            "img/plats/anh-nguyen-kcA-c3f_3FE-unsplash.jpg",
+            "img/plats/martin-widenka-tkfRSPt-jdk-unsplash.jpg",
+        ];
+
+        foreach ($photoDatas as $photoData) {
+            // création d'une nouvelle photo
+            $photo = new PhotoPlat();
+            // sélection d'un fichier jpg
+            $photo->chemin = $photoData;
+            // sauvegarde dans la BDD
+            $photo->save();
+        }
     }
 }

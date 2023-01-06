@@ -18,7 +18,13 @@ class CategorieSeeder extends Seeder
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        $categorieDatas = ["entrée", "plat", "dessert", "petit déjeuner", "boissons"];
+        $categorieDatas = [
+            "entrée",
+            "plat",
+            "dessert",
+            "petit déjeuner",
+            "boissons"
+        ];
 
         foreach ($categorieDatas as $categorieData) {
             // création d'une nouvelle catégorie

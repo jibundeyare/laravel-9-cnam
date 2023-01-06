@@ -19,6 +19,7 @@ class ReservationSeeder extends Seeder
         // prénom Foo
         // jour 06/01/2023
         // heure 12:00
+        // personnes 4
         // tel 0612345678
         // email foo.foo@example.com
 
@@ -26,6 +27,7 @@ class ReservationSeeder extends Seeder
         // prénom Bar
         // jour 13/01/2023
         // heure 12:00
+        // personnes 8
         // tel 0634567812
         // email bar.bar@example.com
 

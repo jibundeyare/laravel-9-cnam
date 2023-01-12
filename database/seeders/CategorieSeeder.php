@@ -19,11 +19,11 @@ class CategorieSeeder extends Seeder
         $faker = Faker\Factory::create('fr_FR');
 
         $categorieDatas = [
-            "entrée",
-            "plat",
-            "dessert",
-            "petit déjeuner",
-            "boissons"
+            "Entrée",
+            "Plat",
+            "Dessert",
+            "Petit déjeuner",
+            "Boissons"
         ];
 
         foreach ($categorieDatas as $categorieData) {
@@ -32,7 +32,7 @@ class CategorieSeeder extends Seeder
             // affectation d'un nom
             $categorie->nom = $categorieData;
             // affectation d'une description
-            $categorie->description = $faker->words(8, true);
+            $categorie->description = ucfirst($faker->words(8, true));
             // sauvegarde dans la BDD
             $categorie->save();
         }

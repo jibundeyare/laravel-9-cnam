@@ -10,7 +10,7 @@
         <p>{{ $categorie->description }}</p>
 
         <ul>
-            @foreach ($categorie->plats as $plat)
+            @foreach ($categorie->platsSortedByPrix as $plat)
             <li>
                 {{ $plat->nom }}<br>
                 {{ $plat->prix }}<br>

@@ -5,9 +5,18 @@
 @section('content')
     <h1>Menu</h1>
 
-    <ul>
     @foreach ($categories as $categorie)
-        <li>{{ $categorie->nom }} ({{ $categorie->description }})</li>
+        <h2>{{ $categorie->nom }}</h2>
+        <p>{{ $categorie->description }}</p>
+
+        <ul>
+            @foreach ($categorie->plats as $plat)
+            <li>
+                {{ $plat->nom }}<br>
+                {{ $plat->prix }}<br>
+                {{ $plat->description }}<br>
+            </li>
+            @endforeach
+        </ul>
     @endforeach
-    </ul>
 @endsection

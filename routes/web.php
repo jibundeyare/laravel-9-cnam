@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
@@ -22,9 +23,7 @@ Route::get('/hello/{name}', [HelloController::class, 'index'])->name('hello');
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::get('/reservation', function () {
     return view('reservation');

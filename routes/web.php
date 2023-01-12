@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelloController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
@@ -17,15 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/hello/{name}', function ($name) {
-    // traitement des données
-    $name = '"'.$name.'"';
-
-    return view('hello', [
-        // passage de variables à une vue
-        'name' => $name,
-    ]);
-})->name('hello');
+Route::get('/hello/{name}', [HelloController::class, 'index'])->name('hello');
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 

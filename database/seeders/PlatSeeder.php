@@ -147,6 +147,11 @@ class PlatSeeder extends Seeder
 
             // sauvegarde dans la BDD
             $plat->save();
+
+            // association d'étiquettes au plat
+            $count = random_int(1, 5);
+            $shortList = $faker->randomElements($etiquetteIds, $count);
+            $plat->etiquettes()->attach($shortList);
         }
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Faker;
 use App\Models\Categorie;
+use App\Models\Etiquette;
 use App\Models\PhotoPlat;
 use App\Models\Plat;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -37,6 +38,18 @@ class PlatSeeder extends Seeder
         $categoriePetitDejeuner = Categorie::find(4);
         $categorieBoisson = Categorie::find(5);
 
+        // toutes les étiquettes
+        // Etiquette::all() c'est l'équivalent du SQL 'SELECT * FROM etiquette'
+        $etiquettes = Etiquette::all();
+        // le nombre d'éléments dans la collection
+        $etiquettesCount = $etiquettes->count();
+
+        $etiquetteVegetarien = Etiquette::find(1);
+        $etiquettePoisson = Etiquette::find(2);
+        $etiquetteBoeuf = Etiquette::find(3);
+        $etiquettePoulet = Etiquette::find(4);
+        $etiquetteAgneau = Etiquette::find(5);
+
         // toutes les photos
         $photos = PhotoPlat::all();
         // la première photo
@@ -50,6 +63,10 @@ class PlatSeeder extends Seeder
                 'epingle' => false,
                 'photo_plat_id' => $photo->id,
                 'categorie_id' => $categorieEntree->id,
+                'etiquettes' => [
+                    $etiquetteVegetarien,
+                    $etiquettePoisson,
+                ],
             ],
             [
                 'nom' => 'Bar',
@@ -58,6 +75,10 @@ class PlatSeeder extends Seeder
                 'epingle' => true,
                 'photo_plat_id' => $photo->id,
                 'categorie_id' => $categoriePlat->id,
+                'etiquettes' => [
+                    $etiquetteBoeuf,
+                    $etiquettePoulet,
+                ],
             ],
             [
                 'nom' => 'Baz',
@@ -66,6 +87,9 @@ class PlatSeeder extends Seeder
                 'epingle' => true,
                 'photo_plat_id' => $photo->id,
                 'categorie_id' => $categorieDessert->id,
+                'etiquettes' => [
+                    $etiquettePoisson,
+                ],
             ],
         ];
 
@@ -86,6 +110,10 @@ class PlatSeeder extends Seeder
             $plat->categorie_id = $platData['categorie_id'];
             // sauvegarde dans la BDD
             $plat->save();
+
+            foreach ($platData['etiquettes'] as $etiquette) {
+                $plat->etiquettes()->attach($etiquette->id);
+            }
         }
 
         for ($i = 0; $i < 100; $i++) {

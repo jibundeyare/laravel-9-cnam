@@ -31,7 +31,7 @@ class EtiquetteSeeder extends Seeder
             "chaud",
             "froid",
             "soft",
-            "alcoolisé",            
+            "alcoolisé",
         ];
 
         foreach ($etiquetteDatas as $etiquetteData) {

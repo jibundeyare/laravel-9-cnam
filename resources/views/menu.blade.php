@@ -12,9 +12,11 @@
         <ul>
             @foreach ($categorie->platsSortedByPrix as $plat)
             <li>
-                {{ $plat->nom }}<br>
-                {{ $plat->prix }}<br>
+                {{ $plat->nom }} {{ $plat->prix }} eur<br>
                 {{ $plat->description }}<br>
+                @foreach ($plat->etiquettes as $etiquette)
+                    #{{ $etiquette->nom }}
+                @endforeach
             </li>
             @endforeach
         </ul>

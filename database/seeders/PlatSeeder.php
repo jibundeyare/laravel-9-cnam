@@ -50,6 +50,8 @@ class PlatSeeder extends Seeder
         $etiquettePoulet = Etiquette::find(4);
         $etiquetteAgneau = Etiquette::find(5);
 
+        $etiquetteIds = $etiquettes->modelKeys();
+
         // toutes les photos
         $photos = PhotoPlat::all();
         // la première photo

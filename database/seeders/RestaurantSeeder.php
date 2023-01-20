@@ -27,6 +27,14 @@ class RestaurantSeeder extends Seeder
                 'cle' => 'tel',
                 'valeur' => $faker->phoneNumber(),
             ],
+            [
+                'cle' => 'carte',
+                'valeur' => 'carte google maps',
+            ],
+            [
+                'cle' => 'horaires',
+                'valeur' => 'Du lundi au samedi, 12h-14h et 19h-23h',
+            ],
         ];
 
         foreach ($restaurantDatas as $restaurantData) {

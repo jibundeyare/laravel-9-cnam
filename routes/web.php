@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ReservationController as AdminReservationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\HomeController;
@@ -33,6 +34,8 @@ Route::get('/reservation', function () {
 Route::get('/mentions-legales', function () {
     return view('mentions-legales');
 })->name('mentions-legales');
+
+Route::get('/admin/reservation', [AdminReservationController::class, 'index'])->middleware('auth')->name('admin.reservation.index');
 
 // routes de breeze
 Route::get('/dashboard', function () {

@@ -20,6 +20,6 @@ class Etiquette extends Model
      */
     public function plats()
     {
-        $this->belongsToMany(Plat::class);
+        return $this->belongsToMany(Plat::class);
     }
 }

@@ -5,6 +5,12 @@
 @section('content')
     <h1>Admin - Réservation - Modification</h1>
 
+    @if (Session::has('confirmation'))
+        <div>
+            {{ Session::get('confirmation') }}
+        </div>
+    @endif
+
     <form action="{{ route('admin.reservation.update', ['id' => $reservation->id]) }}" method="post">
         @csrf
         <div>

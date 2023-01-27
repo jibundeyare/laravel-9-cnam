@@ -80,6 +80,8 @@ class ReservationController extends Controller
         $reservation->email = $request->get('email');
         $reservation->save();
 
+        $request->session()->flash('confirmation', 'Vos modifications ont été enregistrées.');
+
         return redirect()->route('admin.reservation.edit', ['id' => $reservation->id]);
     }
 }

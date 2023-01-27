@@ -37,6 +37,12 @@ Route::get('/mentions-legales', function () {
 
 Route::get('/admin/reservation', [AdminReservationController::class, 'index'])->middleware('auth')->name('admin.reservation.index');
 
+Route::get('/admin/reservation/create', [AdminReservationController::class, 'create'])->middleware('auth')->name('admin.reservation.create');
+Route::post('/admin/reservation/store', [AdminReservationController::class, 'store'])->middleware('auth')->name('admin.reservation.store');
+
+Route::get('/admin/reservation/{id}/edit', [AdminReservationController::class, 'edit'])->middleware('auth')->name('admin.reservation.edit');
+Route::post('/admin/reservation/{id}/update', [AdminReservationController::class, 'update'])->middleware('auth')->name('admin.reservation.update');
+
 // routes de breeze
 Route::get('/dashboard', function () {
     return view('dashboard');

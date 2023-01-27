@@ -68,6 +68,16 @@ class ReservationController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        $validated = $request->validate([
+            'nom' => 'required|min:2|max:100',
+            'prenom' => 'required|min:2|max:100',
+            'jour' => 'required|date|date_format:Y-m-d|after_or_equal:today',
+            'heure' => 'required|date_format:H:i:s',
+            'nombre_personnes' => 'required|numeric|gte:1|lte:20',
+            'tel' => 'required|regex:/^[0-9]{2} *[0-9]{2} *[0-9]{2} *[0-9]{2} *[0-9]{2}$/',
+            'email' => 'required|email:rfc,dns',
+        ]);
+
         // récupération de la réservation
         $reservation = Reservation::find($id);
 

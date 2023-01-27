@@ -31,3 +31,7 @@ h1 {
 img {
     max-width: 100%;
 }
+
+.menu--photo-plat {
+    width: 100px;
+}

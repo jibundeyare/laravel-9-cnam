@@ -12,6 +12,7 @@
         <ul>
             @foreach ($categorie->platsSortedByPrix as $plat)
             <li>
+                <img class="menu--photo-plat" src="{{ asset($plat->photo->chemin) }}" alt="">
                 {{ $plat->nom }} {{ $plat->prix }} eur<br>
                 {{ $plat->description }}<br>
                 @foreach ($plat->etiquettes as $etiquette)

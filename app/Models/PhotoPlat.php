@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Plat;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,6 @@ class PhotoPlat extends Model
      */
     public function plat()
     {
-        return $this->belongsTo(Plat::class);
+        return $this->hasOne(Plat::class, 'photo_plat_id', 'id');
     }
 }

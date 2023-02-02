@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use stdClass;
 use App\Models\Reservation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -27,10 +28,23 @@ class ReservationController extends Controller
     public function create()
     {
         // valeurs par défaut
+        $reservation = new stdClass;
+
+        $reservation->nom = '';
+        $reservation->prenom = '';
+        $reservation->jour = '';
+        $reservation->heure = '20:00';
+        $reservation->nombre_personnes = 2;
+        $reservation->tel = '';
+        $reservation->email = '';
+
+        // récupération des créneaux horaires de réservation
+        $creneaux_horaires = $this->getCreneauxHoraires();
 
         // transmission des valeurs par défaut à la vue
         return view('admin.reservation.create', [
-            // ...
+            'reservation' => $reservation,
+            'creneaux_horaires' => $creneaux_horaires,
         ]);
     }
 
@@ -39,9 +53,33 @@ class ReservationController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        $validated = $request->validate([
+            'nom' => 'required|min:2|max:100',
+            'prenom' => 'required|min:2|max:100',
+            'jour' => 'required|date|date_format:Y-m-d|after_or_equal:today',
+            'heure' => 'required|date_format:H:i',
+            'nombre_personnes' => 'required|numeric|gte:1|lte:20',
+            'tel' => 'required|regex:/^[0-9]{2} *[0-9]{2} *[0-9]{2} *[0-9]{2} *[0-9]{2}$/',
+            'email' => 'required|email:rfc,dns',
+        ]);
 
+        // création d'une réservation
+        $reservation = new Reservation();
+
+        $reservation->nom = $request->get('nom');
+        $reservation->prenom = $request->get('prenom');
+        $reservation->jour = $request->get('jour');
+        $reservation->heure = $request->get('heure');
+        $reservation->nombre_personnes = $request->get('nombre_personnes');
+        $reservation->tel = $request->get('tel');
+        $reservation->email = $request->get('email');
+        $reservation->save();
+
+        $request->session()->flash('confirmation', 'La création a bien été effectuée.');
+
+        return redirect()->route('admin.reservation.index');
     }
 
     /**

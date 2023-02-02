@@ -195,4 +195,19 @@ class ReservationController extends Controller
 
         return redirect()->route('admin.reservation.edit', ['id' => $reservation->id]);
     }
+
+    public function delete(Request $request, int $id)
+    {
+        $reservation = Reservation::find($id);
+
+        if (!$reservation) {
+            abort(404);
+        }
+
+        $reservation->delete();
+
+        $request->session()->flash('confirmation', 'La suppression a bien été effectuée.');
+
+        return redirect()->route('admin.reservation.index');
+    }
 }

@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// routes du front office
+
+// page d'accueil
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/hello/{name}', [HelloController::class, 'index'])->name('hello');
@@ -34,6 +37,8 @@ Route::get('/reservation', function () {
 Route::get('/mentions-legales', function () {
     return view('mentions-legales');
 })->name('mentions-legales');
+
+// routes du back office
 
 Route::get('/admin/reservation', [AdminReservationController::class, 'index'])->middleware('auth')->name('admin.reservation.index');
 

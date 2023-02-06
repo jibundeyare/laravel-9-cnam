@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PlatController as AdminPlatController;
 use App\Http\Controllers\Admin\ReservationController as AdminReservationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HelloController;
@@ -40,6 +41,16 @@ Route::get('/mentions-legales', function () {
 
 // routes du back office
 
+// CRUD plat
+// @todo liste des plats
+
+Route::get('/admin/plat/create', [AdminPlatController::class, 'create'])->middleware('auth')->name('admin.plat.create');
+Route::post('/admin/plat', [AdminPlatController::class, 'store'])->middleware('auth')->name('admin.plat.store');
+
+// @todo modification des plats
+// @todo suppression des plats
+
+// CRUD réservation
 Route::get('/admin/reservation', [AdminReservationController::class, 'index'])->middleware('auth')->name('admin.reservation.index');
 
 Route::get('/admin/reservation/create', [AdminReservationController::class, 'create'])->middleware('auth')->name('admin.reservation.create');

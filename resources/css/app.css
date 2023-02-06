@@ -35,3 +35,15 @@ img {
 .menu--photo-plat {
     width: 100px;
 }
+
+.form--radio-buttons--scrollable,
+.form--checkboxes--scrollable {
+    border: 1px black solid;
+    max-height: 250px;
+    overflow: auto;
+    width: 800px;
+}
+
+.form--radio-button-image {
+    height: 100px;
+}

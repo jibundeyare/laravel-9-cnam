@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('page_title', 'Admin - Création')
+@section('page_title', 'Admin - Réservation - Création')
 
 @section('content')
     <h1>Admin - Réservation - Création</h1>

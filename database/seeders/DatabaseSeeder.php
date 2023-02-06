@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PlatSeeder::class,
             ReservationSeeder::class,
             RestaurantSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
